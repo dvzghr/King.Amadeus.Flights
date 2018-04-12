@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:49330/",
+      "applicationUrl": "http://localhost:59693/",
       "sslPort": 0
     }
   },
@@ -11,13 +11,15 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
+      "launchUrl": "api/values",
       "environmentVariables": {
+        "apikey": "8V7OSAi95A7iernO8ZM0bpstZG4DAvxF",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "King.Amadeus.Flights.Api": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "launchUrl": "api/values",
       "environmentVariables": {
         "apikey": "8V7OSAi95A7iernO8ZM0bpstZG4DAvxF",
         "ASPNETCORE_ENVIRONMENT": "Development"
