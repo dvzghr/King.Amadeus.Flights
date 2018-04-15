@@ -11,11 +11,6 @@ using RestSharp;
 
 namespace King.Amadeus.Flights.Api.Services
 {
-    public interface IFlightSearchService
-    {
-        Task<FlightSearch> GetFlights(FlightSearchDto flightSearch);
-    }
-
     public class AmadeusFlightSearchService : IFlightSearchService
     {
         public async Task<FlightSearch> GetFlights(FlightSearchDto flightSearch)

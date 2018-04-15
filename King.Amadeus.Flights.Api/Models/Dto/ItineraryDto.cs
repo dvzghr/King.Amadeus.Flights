@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using King.Amadeus.Flights.Api.Models.Amadeus;
 
 namespace King.Amadeus.Flights.Api.Models.Dto
 {

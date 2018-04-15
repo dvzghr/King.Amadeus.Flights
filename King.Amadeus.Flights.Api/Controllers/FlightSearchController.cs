@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using King.Amadeus.Flights.Api.Helpers;
 using King.Amadeus.Flights.Api.Models.Amadeus;
 using King.Amadeus.Flights.Api.Models.Dto;
 using King.Amadeus.Flights.Api.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace King.Amadeus.Flights.Api.Controllers
@@ -16,7 +13,7 @@ namespace King.Amadeus.Flights.Api.Controllers
     /// King hiring test: Amadeus Flight Search api
     /// Date: 16.4.2018.
     /// Author: Dražen Vuković
-    /// Email: drazen.zg@outlook.com
+    /// Email: ths_hr@hotmail.com
     /// </summary>
     [Route("api/[controller]")]
     [Produces("application/json")]
@@ -65,13 +62,6 @@ namespace King.Amadeus.Flights.Api.Controllers
             var result = serviceResult.ExportToSearchResultDtos();
 
             return Ok(result);
-        }
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
         }
     }
 }

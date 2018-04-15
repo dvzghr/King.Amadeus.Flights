@@ -1,7 +1,6 @@
-﻿using King.Amadeus.Flights.Api.Models.Amadeus;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace King.Amadeus.Flights.Api.Models
+namespace King.Amadeus.Flights.Api.Models.Amadeus
 {
     public class Itinerary
     {
