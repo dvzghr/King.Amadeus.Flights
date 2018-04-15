@@ -1,34 +1,14 @@
 import axios from "axios";
 
-const uri = '/api';
+const uri = '/api/flightsearch';
 
-export default {
-    async fetchUgovore() {
-        const response = await axios.get(`${uri}/ugovor/`);
-        return response.data;
-    },
-    async fetchUgovor(id) {
-        const response = await axios.get(`${uri}/ugovor/${id}`);
-        return response.data;
-    },
-    async pushUgovor(ugovor) {
-        const response = await axios.post(`${uri}/ugovor/`, ugovor);
-        return response.data;
-    },
-    async fetchSlobodnaMjesta() {
-        const response = await axios.get(`${uri}/ugovor/mjesta`);
-        return response.data;
-    },
-    async fetchKorisnici(name) {
-        const response = await axios.get(`${uri}/korisnik/${name ? name : ''}`);
-        return response.data;
-    },
-    async fetchKorisnik(id) {
-        const response = await axios.get(`${uri}/korisnik/${id}`);
-        return response.data;
-    },
-    async pushKorisnik(korisnik) {
-        const response = await axios.post(`${uri}/korisnik/`, korisnik);
-        return response.data;
-    }
-};
+const fetchFlights = query => axios.get(uri, {params: {...query}})
+    .then(response => response.data)
+    .catch(error => {
+        if (error.response.status != 404) {
+            alert(error.response.data.message);
+        }
+        return [];
+    });
+
+export default {fetchFlights};

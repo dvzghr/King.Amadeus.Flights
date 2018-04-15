@@ -1,3 +1,4 @@
+using King.Amadeus.Flights.Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
@@ -18,6 +19,10 @@ namespace King.Amadeus.Flights.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IFlightSearchService, AmadeusFlightSearchService>();
+
+            services.AddResponseCaching();
+
             services.AddMvc();
 
             // In production, the React files will be served from this directory
@@ -42,6 +47,7 @@ namespace King.Amadeus.Flights.Api
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
+            app.UseResponseCaching();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

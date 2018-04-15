@@ -1,14 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using King.Amadeus.Flights.Api.Helpers;
+using King.Amadeus.Flights.Api.Models.Amadeus;
 using King.Amadeus.Flights.Api.Models.Dto;
 using King.Amadeus.Flights.Api.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace King.Amadeus.Flights.Api.Controllers
 {
+    /// <summary>
+    /// King hiring test: Amadeus Flight Search api
+    /// Date: 16.4.2018.
+    /// Author: Dražen Vuković
+    /// Email: drazen.zg@outlook.com
+    /// </summary>
     [Route("api/[controller]")]
     [Produces("application/json")]
     public class FlightSearchController : ControllerBase
@@ -22,12 +31,40 @@ namespace King.Amadeus.Flights.Api.Controllers
 
         [HttpGet]
         [ResponseCache(Duration = 600, VaryByQueryKeys = new[] { "*" })]
-        public async Task<List<SearchResultDto>> Get([FromQuery] FlightSearchDto flightSearch)
+        public async Task<IActionResult> Get([FromQuery] FlightSearchDto flightSearch)
         {
-            var serviceResult = await service.GetFlights(flightSearch);
+            if (!ModelState.IsValid)
+                return BadRequest(new
+                                  {
+                                      message = "Invalid or missing input parameters."
+                                  });
+
+            FlightSearch serviceResult;
+
+            try
+            {
+                serviceResult = await service.GetFlights(flightSearch);
+            }
+            catch (ApiException ex)
+            {
+                return StatusCode((int) ex.StatusCode,
+                                  new
+                                  {
+                                      message = ex.Message
+                                  });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int) HttpStatusCode.InternalServerError,
+                                  new
+                                  {
+                                      message = ex.Message
+                                  });
+            }
+
             var result = serviceResult.ExportToSearchResultDtos();
 
-            return result;
+            return Ok(result);
         }
 
         // GET api/values/5

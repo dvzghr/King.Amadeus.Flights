@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
 using King.Amadeus.Flights.Api.Models.Amadeus.Flight;
-using System.Collections.Generic;
+using Newtonsoft.Json;
 
-namespace King.Amadeus.Flights.Api.Models
+namespace King.Amadeus.Flights.Api.Models.Amadeus
 {
     public class FlightList
     {

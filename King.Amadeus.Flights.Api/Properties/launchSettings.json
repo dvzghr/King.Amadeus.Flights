@@ -17,7 +17,6 @@
     },
     "King.Amadeus.Flights.Api": {
       "commandName": "Project",
-      "launchBrowser": true,
       "environmentVariables": {
         "apikey": "8V7OSAi95A7iernO8ZM0bpstZG4DAvxF",
         "ASPNETCORE_ENVIRONMENT": "Development"
